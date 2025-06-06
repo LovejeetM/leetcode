@@ -12,10 +12,10 @@ This repository is organized into two main sections, each with a specific focus 
 
 *   ### **/dsa/**
     *   Contains my from-scratch implementations of fundamental Data Structures and common Algorithms.
-    *   **Languages:** `C++` & `C`.
+    *   **Languages:**  `C++` & `C`.
 
 *   ### **/leetcode/**
     *   Contains my solutions to problems from the LeetCode online.
-    *   **Language:** `Python`.  
+    *   **Language:**  `Python`.  
 
 ---
