@@ -6,7 +6,7 @@ This repository serves as a personal log of my journey through the world of Data
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 This repository is organized into two main sections, each with a specific focus and language choice:
 
