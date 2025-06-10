@@ -65,4 +65,3 @@ def searchInsert(nums, target):
 a = [1,2,3,4,5,7,9,9,11]
 t = 10
 
-print(searchInsert(a, t))
