@@ -32,6 +32,8 @@ def letterCombinations(digits):
     :type digits: str
     :rtype: List[str]
     """
+    if not len(digits) >= 1:
+        return []
     map1 = {
         '0': [''],
         '1': [''],
@@ -44,14 +46,17 @@ def letterCombinations(digits):
         '8': ['t', 'u', 'v'],
         '9': ['w', 'x', 'y', 'z']
     }
-    n = []
-    com = []
-    factorial = 1
-    for i, char in enumerate(digits):
-        com = com + map1[char]
-        factorial = factorial*(i+1)
+    
+    r = ['']
+    for d in digits:
+        temp = []
+        for prefix in r:
+            for i in map1[d]:
+                temp.append(prefix + i)
+        r = temp
+    return r
 
-    while not len(n)>= factorial:
-        for i in range(0, len(digits)):
-            s = l
-        
+
+a = ""
+b = letterCombinations(a)
+print(b)
