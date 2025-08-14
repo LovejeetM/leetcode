@@ -49,3 +49,42 @@ All the numbers of nums are unique.
 #     print(out)
 
 # subsets([1,2,3])
+
+
+
+# r = ['']
+# for d in digits:
+#     temp = []
+#     for prefix in r:
+#         for i in map1[d]:
+#             temp.append(prefix + i)
+#     r = temp
+# return r
+
+# def subsets(nums):
+# #     """
+# #     :type nums: List[int]
+# #     :rtype: List[List[int]]
+# #     """
+#     l = [[0]]
+#     temp = []
+#     for i in nums:
+#         for pre in l:
+#             temp.append(pre + [i])
+#         l = temp
+#     return temp
+
+# print(subsets([2,3,4]))
+
+
+def subsets(nums):
+    """
+    :type nums: List[int]
+    :rtype: List[List[int]]
+    """
+    res = [[]]
+    for n in nums:
+        res += [item + [n] for item in res]
+    return res
+
+print(subsets([0, 1, 2, 3]))
