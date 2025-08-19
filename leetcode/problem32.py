@@ -44,11 +44,17 @@ Constraints:
 -109 <= nums[i] <= 109
 """
 
-def containsDuplicate(self, nums):
+def containsDuplicate(nums):
     """
     :type nums: List[int]
     :rtype: bool
     """
+    if len(set(nums)) != len(nums):
+        return True
+    else:
+        return False
     
-        
+
+nums = [1,1,1,3,3,4,3,2,4,2]
+print(containsDuplicate(nums))
 
