@@ -126,3 +126,4 @@ fruits = [3,6,1]
 baskets = [6,4,7]
 
 print(numOfUnplacedFruits(fruits, baskets))
+
