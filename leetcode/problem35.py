@@ -37,9 +37,13 @@ Constraints:
 
 nums is a permutation of [1, 2, 3].
 """
+import time
 
 class Foo(object):
     def __init__(self):
+        self.sem1  = 1
+        self.sem2 = 0
+        self.sem3 = 0
         pass
 
 
@@ -48,9 +52,11 @@ class Foo(object):
         :type printFirst: method
         :rtype: void
         """
+        if self.sem1 == 1:
         
         # printFirst() outputs "first". Do not change or remove this line.
-        printFirst()
+            printFirst()
+            self.sem2 = 1
 
 
     def second(self, printSecond):
@@ -58,17 +64,29 @@ class Foo(object):
         :type printSecond: method
         :rtype: void
         """
-        
+        while True:
+            if self.sem2 == 1:
         # printSecond() outputs "second". Do not change or remove this line.
-        printSecond()
-            
+                printSecond()
+                self.sem3 = 1
+                self.sem2 = 0
+            else:
+                time.sleep(0.10)
+
             
     def third(self, printThird):
         """
         :type printThird: method
         :rtype: void
         """
+        while True:
+            if self.sem3 == 1:
+        # printSecond() outputs "second". Do not change or remove this line.
+                printThird()
+                self.sem3 = 0 
+            else:
+                time.sleep(0.10)
         
         # printThird() outputs "third". Do not change or remove this line.
-        printThird()
+        
 
