@@ -32,11 +32,22 @@ Constraints:
 ransomNote and magazine consist of lowercase English letters.
 """
 
-def canConstruct(self, ransomNote, magazine):
+def canConstruct(ransomNote, magazine):
     """
     :type ransomNote: str
     :type magazine: str
     :rtype: bool
     """
     
-        
+    mag = [i for i in magazine]
+    for a in ransomNote:
+        if a in mag:
+            mag.pop(mag.index(a))
+        else:
+            return False
+    return True
+
+ransomNote = "aa"
+magazine = "ab"
+
+print(canConstruct(ransomNote, magazine))
