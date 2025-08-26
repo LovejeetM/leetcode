@@ -17,7 +17,7 @@ Return the sentence after the replacement.
 
 Example 1:
 
-Input: dictionary = ["cat","bat","rat"], sentence = "the cattle was rattled by the battery"
+Input: dictionary = ["cat","bat","rat"], sentence = "the tcattle was rattled by the battery"
 Output: "the cat was rat by the bat"
 Example 2:
 
@@ -38,9 +38,92 @@ Every two consecutive words in sentence will be separated by exactly one space.
 sentence does not have leading or trailing spaces.
 """
 
+# def replaceWords(dictionary, sentence):
+#     """
+#     :type dictionary: List[str]
+#     :type sentence: str
+#     :rtype: str
+#     """
+#     s = sentence.split(" ")
+#     g = ["the", "by", "was"]
+#     ot = ""
+    
+#     def k(e):
+#        return len(e)
+#     dictionary.sort(key= k)
+    
+#     for ind, i in enumerate(s):
+#         for word in dictionary:
+#             if i in g:
+#                 ot += i 
+#                 if ind != (len(s) -1):
+#                     ot += " "
+#                 break
+#             if word in i and word != s[-1]:
+#                 ot += word 
+#                 if ind != (len(s) -1):
+#                     ot += " "
+#                 break
+#             else:
+#                 continue
+
+#     return ot
+
+
+
 def replaceWords(dictionary, sentence):
     """
     :type dictionary: List[str]
     :type sentence: str
     :rtype: str
     """
+    s = sentence.split(" ")
+    g = ["the", "by", "was"]
+    ot = ""
+    t = ""
+    
+    def k(e):
+       return len(e)
+    dictionary.sort(key= k)
+
+    for i in s:
+        if i in g:
+            ot += i
+            if ind != (len(s) -1):
+                ot += " "
+                continue
+        else:
+            for ch in i:
+                for min in range(len(i-1)):
+                    
+                
+
+
+
+    
+    for ind, i in enumerate(s):
+        if i in g:
+            ot += i 
+            if ind != (len(s) -1):
+                ot += " "
+            break
+        else: 
+            for word in i:
+
+                
+
+                if word in i and word != s[-1]:
+                    ot += word 
+                    if ind != (len(s) -1):
+                        ot += " "
+                    break
+                else:
+                    continue
+
+    return ot
+
+
+
+dictionary = ["cat","bat","rat"]
+sentence = "the cattle was rattled by the battery"
+print(replaceWords(dictionary, sentence))
