@@ -65,28 +65,103 @@ grid.length == grid[i].length == n
 """
 
 
+# def sortMatrix(grid):
+#     """
+#     :type grid: List[List[int]]
+#     :rtype: List[List[int]]
+#     """
+    
+#     diagonals = []
+#     temp = []
+#     start = 0
+#     row_l =len(grid)
+#     col = 0
+    
+#     while start < len(grid[0]):
+#         for i in range(start, row_l):
+#             diagonal_element = grid[i][col]
+#             temp.append(diagonal_element)
+#             col += 1
+#         diagonals.append(sorted(temp, reverse= True))
+#         col = 0
+#         temp = []
+#         start += 1
+    
+#     start_col = 1
+#     row = 0
+#     while start_col < len(grid):
+#         for i in range(start_col, len(grid[0])):   
+#             diagonal_element = grid[row][i]
+#             temp.append(diagonal_element)
+#             row += 1
+#         diagonals.append(sorted(temp))
+#         row = 0
+#         temp = []
+#         start_col += 1
+
+#     zeros = [[0]*len(grid[0]) for _ in range(len(grid))]
+#     print(zeros)
+
+        
+    
+#     return diagonals
+
+
+
 def sortMatrix(grid):
     """
     :type grid: List[List[int]]
     :rtype: List[List[int]]
     """
     
-    diagonal = []
+    diagonals = []
+    temp = []
     start = 0
     row_l =len(grid)
     col = 0
     
-    # while start !> len(grid[0]):
-    for i in range(start, row_l):
-        diagonal_element = grid[i][col]
-        diagonal.append(diagonal_element)
-        col += 1
+    while start < len(grid[0]):
+        row = 0
+        col = start
+
+        while row < len(grid) and col < len(grid[0]):
+            diagonal_element = grid[row][col]
+            temp.append(diagonal_element)
+            row += 1
+            col += 1
+        diagonals.append(sorted(temp, reverse= True))
+        col = 0
+        temp = []
+        start += 1
     
-    return sorted(diagonal, reverse= True)
+    start_col = 1
+    row = 0
+    
+    while start_col < len(grid):
+        row = start_col
+        col = 0
+        while row < len(grid) and col < len(grid[0]):
+            diagonal_element = grid[row][col]
+            temp.append(diagonal_element)
+            row += 1
+            col += 1
+        diagonals.append(sorted(temp))
+        row = 0
+        temp = []
+        start_col += 1
+
+    zeros = [[0]*len(grid[0]) for _ in range(len(grid))]
+    print(zeros)
+
+    return diagonals
 
 
 
 
-grid = [[1,7,3],[9,8,2],[4,5,6]]
+grid = [[1,7,3],
+        [1,7,3],
+        [9,8,2],
+        [4,5,6]]
 
 print(sortMatrix(grid))
+
