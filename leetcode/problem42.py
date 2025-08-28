@@ -136,7 +136,7 @@ def sortMatrix(grid):
     
     start_col = 1
     row = 0
-    
+
     while start_col < len(grid):
         row = start_col
         col = 0
@@ -151,17 +151,48 @@ def sortMatrix(grid):
         start_col += 1
 
     zeros = [[0]*len(grid[0]) for _ in range(len(grid))]
-    print(zeros)
+    # print(zeros)
 
-    return diagonals
+    diagonal_index = 0
+    start = 0
+
+    while start < len(grid[0]):
+        current_diagonal = diagonals[diagonal_index]
+        elem_index = 0
+        row = 0
+        col = start
+        while row < len(grid) and col < len(grid[0]):
+            zeros[row][col] = current_diagonal[elem_index]
+            row += 1
+            col += 1
+            elem_index += 1
+        start += 1
+        diagonal_index += 1
+
+    
+    start_col = 1
+
+    while start_col < len(grid):
+        current_diagonal = diagonals[diagonal_index]
+        elem_index = 0
+        row = start_col
+        col = 0
+
+        while row < len(grid) and col < len(grid[0]):
+            zeros[row][col] = current_diagonal[elem_index]
+            row += 1
+            col += 1
+            elem_index += 1
+        start_col += 1
+        diagonal_index += 1
+
+    # return diagonals
+    return zeros
 
 
 
 
-grid = [[1,7,3],
-        [1,7,3],
-        [9,8,2],
-        [4,5,6]]
+grid = [[1,7,3],[9,8,2],[4,5,6]]
 
 print(sortMatrix(grid))
 
