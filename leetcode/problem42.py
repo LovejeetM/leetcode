@@ -117,7 +117,6 @@ def sortMatrix(grid):
     diagonals = []
     temp = []
     start = 0
-    row_l =len(grid)
     col = 0
     
     while start < len(grid[0]):
@@ -197,3 +196,31 @@ grid = [[1,7,3],[9,8,2],[4,5,6]]
 
 print(sortMatrix(grid))
 
+
+#Optimal
+def sortMatrix(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        n = len(grid)
+        diagonals = defaultdict(list)
+
+    # Step 1: Group elements by diagonals using i - j as the key
+        for i in range(n):
+            for j in range(n):
+                diagonals[i - j].append(grid[i][j])
+
+    # Step 2: Sort diagonals based on the rule
+        for key in diagonals:
+            if key < 0:
+                diagonals[key].sort()  # ascending
+            else:
+                diagonals[key].sort(reverse=True)  # descending
+
+    # Step 3: Place the sorted values back
+        for i in range(n):
+            for j in range(n):
+                grid[i][j] = diagonals[i - j].pop(0)
+
+        return grid
