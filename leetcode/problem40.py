@@ -70,6 +70,10 @@ sentence does not have leading or trailing spaces.
 #     return ot
 
 
+# dictionary = ["cat","bat","rat"]
+# sentence = "the cattle was rattled by the battery"
+# print(replaceWords(dictionary, sentence))
+
 
 def replaceWords(dictionary, sentence):
     """
@@ -77,53 +81,32 @@ def replaceWords(dictionary, sentence):
     :type sentence: str
     :rtype: str
     """
-    s = sentence.split(" ")
-    g = ["the", "by", "was"]
-    ot = ""
-    t = ""
-    
-    def k(e):
-       return len(e)
-    dictionary.sort(key= k)
+    sentence = list(sentence.split(" "))
+    full = ""
 
-    for i in s:
-        if i in g:
-            ot += i
-            if ind != (len(s) -1):
-                ot += " "
-                continue
+   
+    for word in sentence:
+        temp = []
+        if word == "baba":
+            full += (word + " ")
+            continue
+        for start in range(len(word)):
+            sen = ""
+            
+            for j in range(start, len(word)):
+                sen += str(word[j])
+                if sen in dictionary:
+                    temp.append(sen)
+        
+        if len(temp) != 0:
+            full += (min(temp, key=len)+ " ")
         else:
-            for ch in i:
-                for min in range(len(i-1)):
-                    
-                
+            full += (word + " ")
 
 
-
-    
-    for ind, i in enumerate(s):
-        if i in g:
-            ot += i 
-            if ind != (len(s) -1):
-                ot += " "
-            break
-        else: 
-            for word in i:
-
-                
-
-                if word in i and word != s[-1]:
-                    ot += word 
-                    if ind != (len(s) -1):
-                        ot += " "
-                    break
-                else:
-                    continue
-
-    return ot
+    return full[:-1]
 
 
-
-dictionary = ["cat","bat","rat"]
-sentence = "the cattle was rattled by the battery"
+dictionary = ["a", "aa", "aaa", "aaaa"]
+sentence = "a aa a aaaa aaa aaa aaa aaaaaa bbb baba ababa"
 print(replaceWords(dictionary, sentence))
